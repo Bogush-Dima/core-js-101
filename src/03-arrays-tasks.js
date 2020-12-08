@@ -8,20 +8,8 @@
  ******************************************************************************************** */
 
 
-/**
- * Returns an index of the specified element in array or -1 if element is not found
- *
- * @param {array} arr
- * @param {any} value
- * @return {number}
- *
- * @example
- *    ['Ace', 10, true], 10    => 1
- *    ['Array', 'Number', 'string'], 'Date'    => -1
- *    [0, 1, 2, 3, 4, 5], 5    => 5
- */
-function findElement(/* arr, value */) {
-  throw new Error('Not implemented');
+function findElement(arr, value) {
+  return arr.indexOf(value);
 }
 
 /**
@@ -40,51 +28,22 @@ function generateOdds(/* len */) {
 }
 
 
-/**
- * Returns the doubled array - elements of the specified array
- * are repeated twice using original order
- *
- * @param {array} arr
- * @return {array}
- *
- * @example
- *    ['Ace', 10, true]  => ['Ace', 10, true,   'Ace', 10, true]
- *    [0, 1, 2, 3, 4, 5] => [0, 1, 2, 3, 4, 5,   0, 1, 2, 3, 4, 5]
- *    [] => []
- */
-function doubleArray(/* arr */) {
-  throw new Error('Not implemented');
+function doubleArray(arr) {
+  const copyArr = arr;
+  const result = arr.concat(copyArr);
+  return result;
 }
 
 
-/**
- * Returns an array of positive numbers from the specified array in original order
- *
- * @param {array} arr
- * @return {array}
- *
- * @example
- *    [ 0, 1, 2, 3, 4, 5 ] => [ 1, 2, 3, 4, 5 ]
- *    [-1, 2, -5, -4, 0] => [ 2 ]
- *    [] => []
- */
-function getArrayOfPositives(/* arr */) {
-  throw new Error('Not implemented');
+function getArrayOfPositives(arr) {
+  const result = arr.filter((num) => num > 0);
+  return result;
 }
 
-/**
- * Returns the array with strings only in the specified array (in original order)
- *
- * @param {array} arr
- * @return {array}
- *
- * @example
- *    [ 0, 1, 'cat', 3, true, 'dog' ] => [ 'cat', 'dog' ]
- *    [ 1, 2, 3, 4, 5 ] => []
- *    [ 'cat, 'dog', 'raccoon' ] => [ 'cat', 'dog', 'raccoon' ]
- */
-function getArrayOfStrings(/* arr */) {
-  throw new Error('Not implemented');
+
+function getArrayOfStrings(arr) {
+  const result = arr.filter((elem) => typeof (elem) === 'string');
+  return result;
 }
 
 /**
@@ -100,8 +59,10 @@ function getArrayOfStrings(/* arr */) {
  *    [ 1, 2, 3, 4, 5, 'false' ]         => [ 1, 2, 3, 4, 5, 'false' ]
  *    [ false, 0, NaN, '', undefined ]   => [ ]
  */
-function removeFalsyValues(/* arr */) {
-  throw new Error('Not implemented');
+function removeFalsyValues(arr) {
+  const falseElements = [false, null, 0, '', undefined, NaN];
+  const result = arr.filter((elem) => !falseElements.includes(elem));
+  return result;
 }
 
 /**

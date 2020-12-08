@@ -8,35 +8,13 @@
  ******************************************************************************************* */
 
 
-/**
- * Returns an area of a rectangle given by width and heigth.
- *
- * @param {numder} width
- * @param {number} height
- * @return {number}
- *
- * @example:
- *   5, 10 => 50
- *   5, 5  => 25
- */
-function getRectangleArea(/* width, height */) {
-  throw new Error('Not implemented');
+function getRectangleArea(width, height) {
+  return width * height;
 }
 
 
-/**
- * Returns a circumference of circle given by radius.
- *
- * @param {number} radius
- * @return {number}
- *
- * @example:
- *   5    => 31.41592653589793
- *   3.14 => 19.729201864543903
- *   0    => 0
- */
-function getCicleCircumference(/* radius */) {
-  throw new Error('Not implemented');
+function getCicleCircumference(radius) {
+  return (2 * radius) * Math.PI;
 }
 
 /**
@@ -55,23 +33,9 @@ function getAverage(/* value1, value2 */) {
   throw new Error('Not implemented');
 }
 
-/**
- * Returns a distance beetween two points by cartesian coordinates.
- *
- * @param {number} x1
- * @param {number} y1
- * @param {number} x2
- * @param {number} y2
- *
- * @return {number}
- *
- * @example:
- *   (0,0) (0,1)    => 1
- *   (0,0) (1,0)    => 1
- *   (-5,0) (10,-10) => 18.027756377319946
- */
-function getDistanceBetweenPoints(/* x1, y1, x2, y2 */) {
-  throw new Error('Not implemented');
+
+function getDistanceBetweenPoints(x1, y1, x2, y2) {
+  return Math.sqrt(((x2 - x1) ** 2) + ((y2 - y1) ** 2));
 }
 
 /**
