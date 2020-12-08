@@ -46,97 +46,38 @@ function getArrayOfStrings(arr) {
   return result;
 }
 
-/**
- * Removes falsy values from the specified array
- * Falsy values: false, null, 0, "", undefined, and NaN.
- * (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean#Description)
- *
- * @param {array} arr
- * @return {array}
- *
- * @example
- *    [ 0, false, 'cat', NaN, true, '' ] => [ 'cat', true ]
- *    [ 1, 2, 3, 4, 5, 'false' ]         => [ 1, 2, 3, 4, 5, 'false' ]
- *    [ false, 0, NaN, '', undefined ]   => [ ]
- */
+
 function removeFalsyValues(arr) {
   const falseElements = [false, null, 0, '', undefined, NaN];
   const result = arr.filter((elem) => !falseElements.includes(elem));
   return result;
 }
 
-/**
- * Returns the array of uppercase strings from the specified array
- *
- * @param {array} arr
- * @return {array}
- *
- * @example
- *    [ 'permanent-internship', 'glutinous-shriek', 'multiplicative-elevation' ]
- *    => [ 'PERMANENT-INTERNSHIP', 'GLUTINOUS-SHRIEK', 'MULTIPLICATIVE-ELEVATION' ],
- *    [ 'a', 'b', 'c', 'd', 'e', 'f', 'g' ]  => [ 'A', 'B', 'C', 'D', 'E', 'F', 'G' ]
- */
-function getUpperCaseStrings(/* arr */) {
-  throw new Error('Not implemented');
+
+function getUpperCaseStrings(arr) {
+  const result = arr.map((elem) => elem.toUpperCase());
+  return result;
 }
 
 
-/**
- * Returns the array of string lengths from the specified string array.
- *
- * @param {array} arr
- * @return {array}
- *
- * @example
- *    [ '', 'a', 'bc', 'def', 'ghij' ]  => [ 0, 1, 2, 3, 4 ]
- *    [ 'angular', 'react', 'ember' ] => [ 7, 5, 5 ]
- */
-function getStringsLength(/* arr */) {
-  throw new Error('Not implemented');
-}
-
-/**
- * Inserts the item into specified array at specified index
- *
- * @param {array} arr
- * @param {any} item
- * @param {number} index
- *
- * @example
- *    [ 1, 3, 4, 5 ], 2, 1  => [ 1, 2, 3, 4, 5 ]
- *    [ 1, 'b', 'c'], 0, 'x'  => [ 'x', 1, 'b', 'c' ]
- */
-function insertItem(/* arr, item, index */) {
-  throw new Error('Not implemented');
-}
-
-/**
- * Returns the n first items of the specified array
- *
- * @param {array} arr
- * @param {number} n
- *
- * @example
- *    [ 1, 3, 4, 5 ], 2 => [ 1, 3 ]
- *    [ 'a', 'b', 'c', 'd'], 3  => [ 'a', 'b', 'c' ]
- */
-function getHead(/* arr, n */) {
-  throw new Error('Not implemented');
+function getStringsLength(arr) {
+  const result = arr.map((elem) => elem.length);
+  return result;
 }
 
 
-/**
- * Returns the n last items of the specified array
- *
- * @param {array} arr
- * @param {number} n
- *
- * @example
- *    [ 1, 3, 4, 5 ], 2  => [ 4, 5 ]
- *    [ 'a', 'b', 'c', 'd'], 3  => [ 'b', 'c', 'd' ]
- */
-function getTail(/* arr, n */) {
-  throw new Error('Not implemented');
+function insertItem(arr, item, index) {
+  return arr.splice(index, 0, item);
+}
+
+
+function getHead(arr, n) {
+  return arr.slice(0, n);
+}
+
+
+function getTail(arr, n) {
+  return arr.slice(-n);
 }
 
 
@@ -164,53 +105,30 @@ function toCsvText(/* arr */) {
   throw new Error('Not implemented');
 }
 
-/**
- * Transforms the numeric array into the according array of squares:
- *   f(x) = x * x
- *
- * @param {array} arr
- * @return {array}
- *
- * @example
- *   [ 0, 1, 2, 3, 4, 5 ] => [ 0, 1, 4, 9, 16, 25 ]
- *   [ 10, 100, -1 ]      => [ 100, 10000, 1 ]
- */
-function toArrayOfSquares(/* arr */) {
-  throw new Error('Not implemented');
+
+function toArrayOfSquares(arr) {
+  const result = arr.map((num) => {
+    const num2 = num * num;
+    return num2;
+  });
+  return result;
 }
 
 
-/**
- * Transforms the numeric array to the according moving sum array:
- *     f[n] = x[0] + x[1] + x[2] +...+ x[n]
- *  or f[n] = f[n-1] + x[n]
- *
- * @param {array} arr
- * @return {array}
- *
- * Example :
- *   [ 1, 1, 1, 1, 1 ]        => [ 1, 2, 3, 4, 5 ]
- *   [ 10, -10, 10, -10, 10 ] => [ 10, 0, 10, 0, 10 ]
- *   [ 0, 0, 0, 0, 0]         => [ 0, 0, 0, 0, 0]
- *   [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ] => [ 1, 3, 6, 10, 15, 21, 28, 36, 45, 55 ]
- */
-function getMovingSum(/* arr */) {
-  throw new Error('Not implemented');
+function getMovingSum(arr) {
+  const result = [];
+  let num2 = 0;
+  arr.reduce((acc, num) => {
+    num2 += num;
+    result.push(num2);
+    return num2;
+  }, 0);
+  return result;
 }
 
-/**
- * Returns every second item from the specified array:
- *
- * @param {array} arr
- * @return {array}
- *
- * Example :
- * [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ] => [ 2, 4, 6, 8, 10 ]
- * [ 'a', 'b', 'c' , null ]  => [ "b", null ]
- * [ "a" ] => []
- */
-function getSecondItems(/* arr */) {
-  throw new Error('Not implemented');
+
+function getSecondItems(arr) {
+  return arr.filter((elem, ind) => ind % 2 === 1);
 }
 
 
