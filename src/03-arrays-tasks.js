@@ -12,19 +12,21 @@ function findElement(arr, value) {
   return arr.indexOf(value);
 }
 
-/**
- * Generates an array of odd numbers of the specified length
- *
- * @param {number} len
- * @return {array}
- *
- * @example
- *    1 => [ 1 ]
- *    2 => [ 1, 3 ]
- *    5 => [ 1, 3, 5, 7, 9 ]
- */
-function generateOdds(/* len */) {
-  throw new Error('Not implemented');
+
+function generateOdds(len) {
+  const newArr = [];
+  newArr.length = len;
+  newArr.fill(1, 0, len);
+  const result = newArr.map((elem, ind) => {
+    let newElem = 1;
+
+    if (ind !== 0) {
+      newElem = elem + (2 * ind);
+    }
+
+    return newElem;
+  });
+  return result;
 }
 
 
@@ -81,28 +83,8 @@ function getTail(arr, n) {
 }
 
 
-/**
- * Returns CSV represebtation of two-dimentional numeric array.
- * https://en.wikipedia.org/wiki/Comma-separated_values
- *
- * @param {array} arr
- * @return {string}
- *
- * @example
- *    [
- *       [  0, 1, 2, 3, 4 ],
- *       [ 10,11,12,13,14 ],
- *       [ 20,21,22,23,24 ],
- *       [ 30,31,32,33,34 ]
- *    ]
- *           =>
- *     '0,1,2,3,4\n'
- *    +'10,11,12,13,14\n'
- *    +'20,21,22,23,24\n'
- *    +'30,31,32,33,34'
- */
-function toCsvText(/* arr */) {
-  throw new Error('Not implemented');
+function toCsvText(arr) {
+  return arr.join('\n');
 }
 
 
@@ -132,58 +114,31 @@ function getSecondItems(arr) {
 }
 
 
-/**
- * Propagates every item in sequence its position times
- * Returns an array that consists of: one first item, two second items, tree third items etc.
- *
- * @param {array} arr
- * @return {array}
- *
- * @example :
- *  [] => []
- *  [ 1 ] => [ 1 ]
- *  [ 'a', 'b' ] => [ 'a', 'b','b' ]
- *  [ 'a', 'b', 'c', null ] => [ 'a', 'b','b', 'c','c','c',  null,null,null,null ]
- *  [ 1,2,3,4,5 ] => [ 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5 ]
- */
-function propagateItemsByPositionIndex(/* arr */) {
-  throw new Error('Not implemented');
+function propagateItemsByPositionIndex(arr) {
+  const result = [];
+  arr.map((elem, ind) => {
+    result.length += (ind + 1);
+    result.fill(elem, (result.length - (ind + 1)));
+    return elem;
+  });
+  return result;
 }
 
 
-/**
- * Returns the 3 largest numbers from the specified array
- *
- * @param {array} arr
- * @return {array}
- *
- * @example
- *   [] => []
- *   [ 1, 2 ] => [ 2, 1 ]
- *   [ 1, 2, 3 ] => [ 3, 2, 1 ]
- *   [ 1,2,3,4,5,6,7,8,9,10 ] => [ 10, 9, 8 ]
- *   [ 10, 10, 10, 10 ] => [ 10, 10, 10 ]
- */
-function get3TopItems(/* arr */) {
-  throw new Error('Not implemented');
+function get3TopItems(arr) {
+  return arr.slice(-3).reverse();
 }
 
 
-/**
- * Returns the number of positive numbers from specified array
- *
- * @param {array} arr
- * @return {number}
- *
- * @example
- *   [ ]          => 0
- *   [ -1, 0, 1 ] => 1
- *   [ 1, 2, 3]   => 3
- *   [ null, 1, 'elephant' ] => 1
- *   [ 1, '2' ] => 1
- */
-function getPositivesCount(/* arr */) {
-  throw new Error('Not implemented');
+function getPositivesCount(arr) {
+  let counter = 0;
+  arr.map((elem) => {
+    if (typeof (elem) === 'number' && elem > 0) {
+      counter += 1;
+    }
+    return counter;
+  });
+  return counter;
 }
 
 /**
