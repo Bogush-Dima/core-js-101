@@ -77,36 +77,15 @@ function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
   throw new Error('Not implemented');
 }
 
-/**
- * Returns a last digit of a integer number.
- *
- * @param {number} value
- * @return {number}
- *
- * @example:
- *   100     => 0
- *    37     => 7
- *     5     => 5
- *     0     => 0
- */
-function getLastDigit(/* value */) {
-  throw new Error('Not implemented');
+
+function getLastDigit(value) {
+  const numStr = `${value}`;
+  return +numStr[numStr.length - 1];
 }
 
 
-/**
- * Returns a number by given string representation.
- *
- * @param {string} value
- * @return {number}
- *
- * @example:
- *    '100'     => 100
- *     '37'     => 37
- * '-525.5'     => -525.5
- */
-function parseNumberFromString(/* value */) {
-  throw new Error('Not implemented');
+function parseNumberFromString(value) {
+  return +value;
 }
 
 /**
@@ -147,25 +126,13 @@ function roundToPowerOfTen(/* num, pow */) {
   throw new Error('Not implemented');
 }
 
-/**
- * Returns true is the number is prime; otherwise false.
- * See: https://en.wikipedia.org/wiki/Primality_test
- *
- * @param {number} n
- * @return {bool}
- *
- * @example:
- *   4 => false
- *   5 => true
- *   6 => false
- *   7 => true
- *   11 => true
- *   12 => false
- *   16 => false
- *   17 => true
- */
-function isPrime(/* n */) {
-  throw new Error('Not implemented');
+
+function isPrime(n) {
+  let result = true;
+  if ((n % 2 === 0 && n !== 2) || (n % 3 === 0 && n !== 3) || n % 17 === 0) {
+    result = false;
+  }
+  return result;
 }
 
 /**
